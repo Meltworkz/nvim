@@ -1,0 +1,29 @@
+local null_ls = require("null-ls")
+
+null_ls.setup({
+    sources = {
+        null_ls.builtins.formatting.black,      -- Python
+        null_ls.builtins.formatting.prettier,   -- JavaScript/HTML/CSS
+        null_ls.builtins.formatting.stylua,     -- Lua
+    },
+    on_attach = function(client, bufnr)
+        -- Only set up the :Format command if the server supports formatting
+        if client.server_capabilities.documentFormattingProvider then
+            vim.api.nvim_buf_create_user_command(
+                bufnr,
+                "Format",
+                function() vim.lsp.buf.format({ bufnr = bufnr }) end,
+                { desc = "Format the current buffer with LSP" }
+            )
+        end
+    end,
+})
+
+-- Set up the command globally in case the LSP server supports it.
+vim.api.nvim_create_user_command(
+    'Format',
+    function()
+        vim.lsp.buf.format()
+    end,
+    { desc = 'Format the current buffer with LSP' }
+)

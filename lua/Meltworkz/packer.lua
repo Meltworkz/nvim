@@ -31,7 +31,6 @@ use('ThePrimeagen/harpoon')
 use('mbbill/undotree')
 use('tpope/vim-fugitive')
 use('numToStr/Comment.nvim')
-use('jose-elias-alvarez/null-ls.nvim')
 
 -- if i want to use nvim Tree remove comment
 -- use{
@@ -53,6 +52,8 @@ use {
         {'hrsh7th/nvim-cmp'},
         {'hrsh7th/cmp-nvim-lsp'},
         {'L3MON4D3/LuaSnip'},
+		-- {'jose-elias-alvarez/null-ls.nvim'},
+		{'mhartington/formatter.nvim'},
     }
 }
 
