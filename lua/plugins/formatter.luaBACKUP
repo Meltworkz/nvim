@@ -1,0 +1,25 @@
+return {
+  'mhartington/formatter.nvim',
+  config = function()
+    require('formatter').setup({
+      logging = false,
+      log_level = vim.log.levels.WARN,
+      filetype = {
+        python = {
+          function()
+            return {
+              exe = "black",
+              args = { "--fast", "-" },
+              stdin = true,
+            }
+          end,
+        },
+      }
+    })
+
+    -- ✅ Manual format command
+    vim.api.nvim_create_user_command("Format", function()
+      vim.cmd("FormatWrite")
+    end, {})
+  end,
+}
