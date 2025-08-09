@@ -4,7 +4,9 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
+		"hrsh7th/cmp-cmdline",
 		"L3MON4D3/LuaSnip", -- Optional: For snippet support
+		"saadparwaiz1/cmp_luasnip",
 	},
 	config = function()
 		local cmp = require("cmp")
@@ -23,6 +25,7 @@ return {
 		sources = {
 			{ name = "nvim_lsp" },
 			{ name = "buffer" },
+			{ name = "Luasnip"},
 			{ name = "path" },
 			},
 		})
